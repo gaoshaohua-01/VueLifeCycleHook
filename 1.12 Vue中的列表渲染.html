@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+
+		<div id="app">
+			<!-- 循环数组 -->
+			<!-- template的作用是不会产生新的标签 -->
+			<!-- <template v-for="(item,index) of list" :index="item.id">
+				{{item.text}}---{{index}}
+			</template> -->
+			<!-- 循环对象 -->
+			<div v-for="(item,key,index) of userInfo">{{item}}---{{key}}----{{index}}</div>
+		</div>
+		<script type="text/javascript">
+			//push pop shift unshift splice sort reverse
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					/* list: [{
+							id: "010120201",
+							text: "Hello"
+						},
+						{
+							id: "010120202",
+							text: "Dell"
+						},
+						{
+							id: "010120203",
+							text: "Lee"
+						},
+					 ]*/
+					userInfo: {
+						name: "Dell",
+						age: 28,
+						gender: "male",
+						aslary: "secret",
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

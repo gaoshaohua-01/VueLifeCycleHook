@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="msg" />
+			<button @click="click">提交</button>
+			<ul>
+				<li v-for="item in list">{{item}}</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				methods: {
+					click: function() {
+						this.list.push(this.msg);
+						this.msg=''
+					},
+				},
+				data: {
+					msg: '',
+					list: []
+				}
+			})
+		</script>
+	</body>
+</html>

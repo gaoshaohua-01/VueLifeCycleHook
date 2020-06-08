@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{fullName}} {{age}}
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					firstName: 'Dell',
+					latName: 'Lee',
+					fullName: 'Dell Lee',
+					age: 28
+				},
+				//计算属性(有缓存机制)--性能更高
+				// computed: {
+				// 	fullName: function() {
+				// 		console.log("计算了一次")
+				// 		return this.firstName + "" + this.latName
+				// 	}
+				// }
+				//方法(没有缓存机制) {{fullName()}}
+				// methods: {
+				// 	fullName: function() {
+				// 		console.log("计算了一次")
+				// 		return this.firstName + "" + this.latName;
+				// 	}
+				// }
+				//监听器(有缓存机制)
+				watch: {
+					firstName: function() {
+						console.log("计算了一次");
+						this.fullName = this.firstName + " " + this.latName;
+					},
+					latName: function() {
+						console.log("计算了一次");
+						this.fullName = this.firstName + " " + this.latName;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

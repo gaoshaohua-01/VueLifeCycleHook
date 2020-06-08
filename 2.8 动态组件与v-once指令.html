@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<child-one v-if="type==='child-one'"></child-one>
+			<child-two v-if="type==='child-two'"></child-two>
+			<!-- 动态组件 -->
+			<!-- <component :is="type"></component> -->
+			<button @click="handleBtnClick">change</button>
+		</div>
+		<script type="text/javascript">
+			// v-once可以提高效率 在内存中提取
+			Vue.component('child-one', {
+				template: '<div v-once>child-one</div>'
+			})
+			Vue.component('child-two', {
+				template: '<div v-once>child-two</div>'
+			})
+
+			var vm = new Vue({
+				el: '#root',
+				data: {
+					type: 'child-one'
+				},
+				methods: {
+					handleBtnClick: function() {
+						this.type = (this.type === 'child-one' ? 'child-two' : 'child-one')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

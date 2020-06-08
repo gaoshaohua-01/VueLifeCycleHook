@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>2.3 TodoList Jquery</title>
+		<script src="jquery-3.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>
+			<input id="input" type="text" />
+			<button id="btn">提交</button>
+			<ul id="list">
+			</ul>
+		</div>
+		<script type="text/javascript">
+			//MVP模式 M模型层 V视图 P控制器Presenter
+			function Page() {
+
+			}
+
+			$.extend(Page.prototype, {
+				init: function() {
+					this.buindEvents()
+				},
+				buindEvents: function() {
+					var btn = $('#btn');
+					btn.on('click', $.proxy(this.handleBtnClick, this))
+				},
+				handleBtnClick: function() {
+					var inputElem = $("#input");
+					var inputValue = inputElem.val();
+					var ulElem = $("#list");
+					ulElem.append('<li>' + inputValue + '</li>')
+					inputElem.val('');
+				}
+			})
+			var page = new Page();
+			page.init();
+		</script>
+	</body>
+</html>
